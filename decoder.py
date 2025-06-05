@@ -119,7 +119,7 @@ def extract_rgb_from_image(image_path):
     try:
         img = Image.open(image_path)
         array = np.array(img)
-        print(f"Image shape: {array.shape}")
+        #print(f"Image shape: {array.shape}")
         
         # Get image dimensions
         height, width = array.shape[:2]
@@ -183,7 +183,7 @@ def reconstruct_with_adaptive_types(decoded_values, adaptive_type_info):
                     
                     ip = f"{octet1}.{octet2}.{octet3}.{octet4}"
                     reconstructed.append(ip)
-                    print(f"  Reconstructed IP: {ip}")
+                    #print(f"  Reconstructed IP: {ip}")
                     val_idx += 4
                 else:
                     # Not enough values for complete IP
@@ -208,7 +208,7 @@ def reconstruct_with_adaptive_types(decoded_values, adaptive_type_info):
                     
                     mac = f"{mac1_hex[:2]}:{mac1_hex[2:4]}:{mac1_hex[4:6]}:{mac2_hex[:2]}:{mac2_hex[2:4]}:{mac2_hex[4:6]}"
                     reconstructed.append(mac)
-                    print(f"  Reconstructed MAC: {mac}")
+                    #print(f"  Reconstructed MAC: {mac}")
                     val_idx += 2
                 else:
                     # Not enough values for complete MAC
@@ -224,21 +224,21 @@ def reconstruct_with_adaptive_types(decoded_values, adaptive_type_info):
             elif orig_type == "Float":
                 # Keep as float
                 reconstructed.append(decoded_values[val_idx])
-                print(f"  Float: {decoded_values[val_idx]}")
+                #print(f"  Float: {decoded_values[val_idx]}")
                 val_idx += 1
                 
             elif orig_type == "Integer":
                 # Convert to integer
                 int_val = int(round(decoded_values[val_idx]))
                 reconstructed.append(int_val)
-                print(f"  Integer: {int_val}")
+                #print(f"  Integer: {int_val}")
                 val_idx += 1
                 
             else:  # String or unknown
                 # For strings, show hash value
                 hash_val = int(round(decoded_values[val_idx]))
                 reconstructed.append(f"str_{hash_val}")
-                print(f"  String hash: str_{hash_val}")
+                #print(f"  String hash: str_{hash_val}")
                 val_idx += 1
                 
         except Exception as e:
@@ -250,13 +250,13 @@ def reconstruct_with_adaptive_types(decoded_values, adaptive_type_info):
     while val_idx < len(decoded_values):
         remaining_val = decoded_values[val_idx]
         reconstructed.append(remaining_val)
-        print(f"  Extra float: {remaining_val}")
+        #print(f"  Extra float: {remaining_val}")
         val_idx += 1
     
     return reconstructed
 
 def translateSingleImage(image_path, type_info=None):
-    print(f"Processing image: {image_path}")
+    #print(f"Processing image: {image_path}")
     
     try:
         # Extract RGB values from image
@@ -309,7 +309,7 @@ def translateMultipleImages(images_dir, type_info=None):
             for image in image_files:
                 image_path = os.path.join(images_dir, image)
                 #print(f"\n{'='*50}")
-                print(f"Processing: {image}")
+                #print(f"Processing: {image}")
                 
                 try:
                     reconstructed_line = translateSingleImage(image_path, type_info)
