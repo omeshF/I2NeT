@@ -1,3 +1,4 @@
+
 # I2NeT - Image to Network  
 **I2NeT (Image to Network)** is the reverse companion to **NeT2I**. It decodes RGB images created from network traffic data back into structured tabular form.
 
@@ -88,6 +89,66 @@ Each 6-byte chunk (2 pixels) is read and unpacked into a float using `struct.unp
 | `from_image.csv` | Final decoded output |
 | `data_types.json` (optional) | Guides the decoder in assigning column types |
 | `data/*.png` | Input image files, one per data row (from NeT2I) |
+
+---
+
+## 📦 Usage Examples
+
+### Basic Usage:
+
+```python
+import I2NeT.decoder as decoder
+
+# Simple decoding
+results = decoder.load_data('data', 'decoded_images.csv')
+print(f"Decoded {results['successful_rows']} rows with {results['success_rate']:.1f}% success rate")
+```
+
+### Advanced Usage with Custom Parameters:
+
+```python
+import I2NeT.decoder as decoder
+
+# Custom configuration
+results = decoder.load_data(
+    data_directory='my_images',
+    output_csv='my_decoded_data.csv',
+    types_file='my_types.json',
+    verbose=True
+)
+
+# Access detailed results
+print(f"Processed {results['processed_images']}/{results['total_images']} images")
+print(f"Successfully decoded {results['successful_rows']} rows")
+print(f"Type information: {results['type_info']['original_types']}")
+```
+
+### Object-Oriented Usage:
+
+```python
+from I2NeT.decoder import I2NeT_Decoder
+
+# Create decoder instance
+decoder = I2NeT_Decoder(types_file='data_types.json')
+
+# Decode multiple datasets
+results1 = decoder.load_data('dataset1_images', 'output1.csv')
+results2 = decoder.load_data('dataset2_images', 'output2.csv')
+
+# Decode single image
+single_result = decoder.decode_single_image('data/0.png')
+print(f"Single image decoded to: {single_result}")
+```
+
+### Single Image Decoding:
+
+```python
+import I2NeT.decoder as decoder
+
+# Decode just one image
+values = decoder.decode_single_image('data/0.png')
+print(f"Decoded values: {values}")
+```
 
 ---
 
