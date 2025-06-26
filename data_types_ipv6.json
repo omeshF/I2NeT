@@ -1,10 +1,10 @@
 {
-  "ip_version": "IPv4",
+  "ip_version": "IPv6",
   "original_types": [
     "Float",
-    "IPv4 Address",
+    "IPv6 Address",
     "MAC Address",
-    "IPv4 Address",
+    "IPv6 Address",
     "Float",
     "Float",
     "Float",
@@ -23,16 +23,10 @@
   ],
   "final_types": [
     "Float",
-    "IPv4 Address",
-    "IPv4 Address",
-    "IPv4 Address",
-    "IPv4 Address",
+    "IPv6 Address",
     "MAC Address",
     "MAC Address",
-    "IPv4 Address",
-    "IPv4 Address",
-    "IPv4 Address",
-    "IPv4 Address",
+    "IPv6 Address",
     "Float",
     "Float",
     "Float",
@@ -50,7 +44,7 @@
     "Float"
   ],
   "encoding_info": {
-    "description": "Data type mapping for decoding - IPv4 version",
+    "description": "Data type mapping for decoding - IPv6 version",
     "float_encoding": "Each float becomes 2 RGB pixels (6 bytes total)",
     "mac_encoding": "MAC address split into 2 hex chunks",
     "ipv4_encoding": "IPv4 address split into 4 octets, each becomes 2 RGB pixels",
@@ -59,5 +53,5 @@
     "string_encoding": "Hashed to integer, converted to float, then 2 RGB pixels"
   },
   "original_columns": 19,
-  "final_columns": 26
+  "final_columns": 20
 }
