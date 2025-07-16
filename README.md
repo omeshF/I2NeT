@@ -1,3 +1,4 @@
+
 # I2NeT (Image to Network) 🖼️ ➡️ 📊
 
 **I2NeT** is the reverse companion to [NeT2I](https://github.com/omeshF/NeT2I). It decodes RGB images created from network traffic data back into structured tabular form. This enhanced version supports both IPv4 and IPv6 network data with intelligent adaptive decoding.
@@ -60,10 +61,10 @@ data/
 ### Basic Usage
 
 ```python
-import I2NeT.decoder as decoder
+import i2net
 
 # Decode all images in directory
-results = decoder.decode(
+results = i2net.decode(
     data_directory='data',
     output_csv='decoded_network_data.csv'
 )
@@ -75,10 +76,10 @@ print(f"📊 Generated {results['total_rows']} data rows")
 ### Advanced Configuration
 
 ```python
-import I2NeT.decoder as decoder
+import i2net
 
 # Custom configuration with separate type files
-results = decoder.decode(
+results = i2net.decode(
     data_directory='network_images',
     output_csv='reconstructed_data.csv',
     types_file_ipv4='ipv4_schema.json',
@@ -95,23 +96,23 @@ print(f"Success: {results['success']}")
 ### Single Image Decoding
 
 ```python
-import I2NeT.decoder as decoder
+import i2net
 
 # Decode individual image
-values = decoder.decode_single(
+values = i2net.decode_single(
     image_path='data/ipv6_0.png',
     is_ipv6=True
 )
 print(f"Decoded values: {values}")
 
 # Auto-detect from filename
-values = decoder.decode_single('data/ipv4_5.png')  # Auto-detects IPv4
+values = i2net.decode_single('data/ipv4_5.png')  # Auto-detects IPv4
 ```
 
 ### Using the Enhanced Decoder Class
 
 ```python
-from I2NeT.decoder import EnhancedI2NeT_Decoder
+from i2net import EnhancedI2NeT_Decoder
 
 # Create decoder instance
 decoder = EnhancedI2NeT_Decoder(
@@ -223,7 +224,7 @@ If you use I2NeT or NeT2I in your research, please cite:
 }
 ```
 
-## 👥 Author
+## 👥 Authors
 
 - **Omesh Fernando** 
 
